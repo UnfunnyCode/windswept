@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public final class WindsweptMilkCauldronInteractions {
     public static void registerCauldronInteractions() {
-        MilkCauldronBlock.MILK.put(WindsweptItems.WOODEN_BUCKET.get(), WindsweptMilkCauldronInteractions::emptyMilkCauldron);
+       // MilkCauldronBlock.MILK.put(WindsweptItems.WOODEN_BUCKET.get(), WindsweptMilkCauldronInteractions::emptyMilkCauldron);
         CauldronInteraction.EMPTY.put(WindsweptItems.WOODEN_MILK_BUCKET.get(), WindsweptMilkCauldronInteractions::fillMilkCauldron);
     }
 

@@ -5,7 +5,8 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.rosemods.windswept.core.WindsweptConfig;
 import com.rosemods.windswept.core.registry.WindsweptTreeDecorators;
-import com.teamabnormals.blueprint.common.block.wood.LogBlock;
+
+import com.teamabnormals.blueprint.common.block.LogBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;

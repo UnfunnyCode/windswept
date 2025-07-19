@@ -3,7 +3,6 @@ package com.rosemods.windswept.common.item;
 import com.rosemods.windswept.common.block.IWoodenBucketPickupBlock;
 import com.rosemods.windswept.core.WindsweptConfig;
 import com.rosemods.windswept.core.registry.WindsweptItems;
-import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,7 +32,6 @@ import net.minecraft.world.phys.HitResult;
 import java.util.function.Supplier;
 
 public class WoodenBucketItem extends BucketItem implements Wearable {
-    public static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.POWDER_SNOW_BUCKET);
 
     public WoodenBucketItem(Supplier<? extends Fluid> supplier, Properties builder) {
         super(supplier, builder);
@@ -92,7 +90,7 @@ public class WoodenBucketItem extends BucketItem implements Wearable {
         return WindsweptConfig.COMMON.woodenBucketDurabilty.get();
     }
 
-    private boolean canBlockContainFluid(Level level, BlockPos pos, BlockState state) {
+    protected boolean canBlockContainFluid(Level level, BlockPos pos, BlockState state) {
         return state.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(level, pos, state, this.getFluid());
     }
 
@@ -116,19 +114,10 @@ public class WoodenBucketItem extends BucketItem implements Wearable {
         return this.getFluid() == Fluids.WATER ? getEmpty(itemStack, null, null) : super.getCraftingRemainingItem(itemStack);
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-        FILLER.fillItem(this, group, items);
-    }
 
     @Override
     public EquipmentSlot getEquipmentSlot(ItemStack stack) {
         return this.getFluid() == Fluids.EMPTY ? EquipmentSlot.HEAD : null;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return SoundEvents.ARMOR_EQUIP_LEATHER;
     }
 
     // Util //

@@ -1,6 +1,5 @@
 package com.rosemods.windswept.common.item;
 
-import com.teamabnormals.blueprint.common.item.InjectedItem;
 import com.teamabnormals.blueprint.core.util.PropertyUtil;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;

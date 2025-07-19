@@ -19,6 +19,6 @@ public class LlamaMixin {
         Llama llama = (Llama) (Object) this;
 
         if (level.getBiome(llama.blockPosition()).is(WindsweptBiomes.TUNDRA.getKey()))
-            llama.setVariant(1);
+            llama.setVariant(Llama.Variant.byId(1));
     }
 }

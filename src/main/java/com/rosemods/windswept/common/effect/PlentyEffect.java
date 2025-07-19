@@ -39,7 +39,7 @@ public class PlentyEffect extends BlueprintMobEffect {
 
         for (BlockPos affectedPos : getToPlacePos(player)) {
             // account for jumping (maybe?)
-            if (!player.isOnGround() && level.getBlockState(affectedPos).isAir())
+            if (!player.onGround() && level.getBlockState(affectedPos).isAir())
                 affectedPos = affectedPos.below();
 
 //            if (player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.ACACIA_BOAT)) {
@@ -99,7 +99,7 @@ public class PlentyEffect extends BlueprintMobEffect {
 
         // account for slabs
         double extraY = playerVec.y - Mth.floor(playerVec.y);
-        if (!player.isOnGround() || extraY <= 0.4)
+        if (!player.onGround() || extraY <= 0.4)
             playerVec = playerVec.add(0, -1, 0);
 
         // default constructor floors everything

@@ -69,7 +69,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (SnowBootsItem.canApplySnowSpeed(entity))
             SnowBootsItem.tryAddSnowSpeed(entity);
-        else if (!entity.level.getBlockState(entity.getOnPos()).isAir() || entity.isFallFlying() || !entity.getItemBySlot(EquipmentSlot.FEET).is(WindsweptItems.SNOW_BOOTS.get()))
+        else if (!entity.level().getBlockState(entity.getOnPos()).isAir() || entity.isFallFlying() || !entity.getItemBySlot(EquipmentSlot.FEET).is(WindsweptItems.SNOW_BOOTS.get()))
             SnowBootsItem.removeSnowSpeed(entity);
 
         if (!entity.isSprinting() || !entity.getItemBySlot(EquipmentSlot.HEAD).is(WindsweptItems.ANTLER_HELMET.get()))
@@ -79,14 +79,14 @@ public abstract class LivingEntityMixin extends Entity {
         SlippingCurseEnchantment.attemptDamageBoots(entity);
 
         if (entity.getEffect(WindsweptEffects.PLENTY.get()) != null)
-            PlentyEffect.tryLeavePlentyFlowers(level, entity, pos, entity.getEffect(WindsweptEffects.PLENTY.get()).getAmplifier());
+            PlentyEffect.tryLeavePlentyFlowers(level(), entity, pos, entity.getEffect(WindsweptEffects.PLENTY.get()).getAmplifier());
     }
 
     @Inject(method = "checkFallDamage", at = @At("HEAD"))
     private void checkFallDamage(double d, boolean p_20991_, BlockState state, BlockPos pos, CallbackInfo info) {
         LivingEntity entity = (LivingEntity) (Object) this;
 
-        if (!entity.level.isClientSide && p_20991_ && entity.fallDistance > 0f) {
+        if (!entity.level().isClientSide && p_20991_ && entity.fallDistance > 0f) {
             SnowBootsItem.removeSnowSpeed(entity);
             if (SnowBootsItem.canApplySnowSpeed(entity))
                 SnowBootsItem.tryAddSnowSpeed(entity);

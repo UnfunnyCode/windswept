@@ -48,11 +48,6 @@ public class WoodenMilkBucketItem extends MilkBucketItem {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-        WoodenBucketItem.FILLER.fillItem(this, group, items);
-    }
-
-    @Override
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         return WoodenBucketItem.getEmpty(itemStack, null, null);
     }

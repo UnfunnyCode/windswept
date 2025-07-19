@@ -7,6 +7,7 @@ import com.rosemods.windswept.core.registry.WindsweptItems;
 import com.teamabnormals.blueprint.core.util.TradeUtil;
 import com.teamabnormals.blueprint.core.util.TradeUtil.BlueprintTrade;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.npc.VillagerType;
@@ -45,7 +46,7 @@ public class WindsweptTradeEvents {
             for (VillagerTrades.ItemListing listing : event.getTrades().get(5))
                 if (listing instanceof VillagerTrades.EmeraldsForVillagerTypeItem trade) {
                     HashMap<VillagerType, Item> newTrades = new HashMap<>(trade.trades);
-                    VillagerType ice = Registry.VILLAGER_TYPE.get(Windswept.location("ice"));
+                    VillagerType ice = Registries.VILLAGER_TYPE.get(Windswept.location("ice"));
 
                     if (!trade.trades.containsKey(ice))
                         newTrades.put(ice, WindsweptItems.HOLLY_BOATS.getFirst().get());

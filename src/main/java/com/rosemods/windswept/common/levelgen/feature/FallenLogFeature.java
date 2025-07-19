@@ -2,7 +2,7 @@ package com.rosemods.windswept.common.levelgen.feature;
 
 import com.google.common.collect.Lists;
 import com.rosemods.windswept.core.registry.WindsweptBlocks;
-import com.teamabnormals.blueprint.common.block.wood.LogBlock;
+import com.teamabnormals.blueprint.common.block.LogBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;

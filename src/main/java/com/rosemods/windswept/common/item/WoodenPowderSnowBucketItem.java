@@ -66,9 +66,5 @@ public class WoodenPowderSnowBucketItem extends SolidBucketItem {
         return false;
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-        WoodenBucketItem.FILLER.fillItem(this, group, items);
-    }
 
 }

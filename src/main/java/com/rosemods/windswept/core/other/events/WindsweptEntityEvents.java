@@ -36,7 +36,6 @@ import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.living.BabyEntitySpawnEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Event.Result;
@@ -158,14 +157,14 @@ public class WindsweptEntityEvents {
         if (entity.getType().is(WindsweptEntityTypeTags.CONVERT_TO_CHILLED) && entity instanceof Mob mob) {
             IDataManager data = (IDataManager) mob;
 
-            if (!mob.level.isClientSide && mob.isAlive() && !mob.isNoAi()) {
+            if (!mob.level().isClientSide && mob.isAlive() && !mob.isNoAi()) {
                 if (data.getValue(WindsweptDataProcessors.IS_FREEZE_CONVERTING)) {
                     ammendData(data, WindsweptDataProcessors.FREEZE_CONVERT_TIME, -1);
                     if (data.getValue(WindsweptDataProcessors.FREEZE_CONVERT_TIME) < 0) {
                         mob.convertTo(WindsweptEntityTypes.CHILLED.get(), true);
                         data.clean();
                         if (!mob.isSilent())
-                            mob.level.levelEvent(null, 1048, mob.blockPosition(), 0);
+                            mob.level().levelEvent(null, 1048, mob.blockPosition(), 0);
                     }
                 } else if (mob.isInPowderSnow) {
                     ammendData(data, WindsweptDataProcessors.POWDER_SNOW_TIME, 1);

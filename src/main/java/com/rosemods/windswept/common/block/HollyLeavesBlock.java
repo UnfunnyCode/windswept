@@ -2,7 +2,6 @@ package com.rosemods.windswept.common.block;
 
 import com.rosemods.windswept.core.other.WindsweptDamageSources;
 import com.rosemods.windswept.core.other.tags.WindsweptEntityTypeTags;
-import com.teamabnormals.blueprint.common.block.wood.BlueprintLeavesBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,6 +9,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
-public class HollyLeavesBlock extends BlueprintLeavesBlock {
+public class HollyLeavesBlock extends LeavesBlock {
     private static final VoxelShape AABB = box(1f, 1f, 1f, 15f, 15f, 15f);
 
     public HollyLeavesBlock(Properties properties) {

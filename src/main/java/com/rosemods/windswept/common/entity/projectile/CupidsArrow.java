@@ -41,7 +41,7 @@ public class CupidsArrow extends AbstractArrow {
     public void tick() {
         super.tick();
 
-        if (!this.inGround && this.level.isClientSide && this.tickCount > 2) {
+        if (!this.inGround && this.level().isClientSide && this.tickCount > 2) {
             Vec3 motion = this.getDeltaMovement();
 
             for (int i = 1; i < 3; i++) {
@@ -52,7 +52,7 @@ public class CupidsArrow extends AbstractArrow {
                 double my = (Math.random() - .5d) * .03d - motion.y * .08d;
                 double mz = (Math.random() - .5d) * .03d - motion.z * .08d;
 
-                this.level.addParticle(WindsweptParticleTypes.CUPIDS_ARROW.get(), px, py, pz, mx, my, mz);
+                this.level().addParticle(WindsweptParticleTypes.CUPIDS_ARROW.get(), px, py, pz, mx, my, mz);
             }
         }
     }
@@ -70,12 +70,12 @@ public class CupidsArrow extends AbstractArrow {
 
     @Override
     protected void doPostHurtEffects(LivingEntity living) {
-        if (this.level.isClientSide)
+        if (this.level().isClientSide)
             for (int i = 0; i < 6; ++i) {
-                double d0 = this.level.random.nextGaussian() * 0.02D;
-                double d1 = this.level.random.nextGaussian() * 0.02D;
-                double d2 = this.level.random.nextGaussian() * 0.02D;
-                this.level.addParticle(ParticleTypes.HEART, living.getRandomX(1.0D), living.getRandomY() + 0.5D, living.getRandomZ(1.0D), d0, d1, d2);
+                double d0 = this.level().random.nextGaussian() * 0.02D;
+                double d1 = this.level().random.nextGaussian() * 0.02D;
+                double d2 = this.level().random.nextGaussian() * 0.02D;
+                this.level().addParticle(ParticleTypes.HEART, living.getRandomX(1.0D), living.getRandomY() + 0.5D, living.getRandomZ(1.0D), d0, d1, d2);
             }
 
         if (!living.isInvertedHealAndHarm())

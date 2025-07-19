@@ -83,17 +83,16 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge:${project.jei}")
 
     implementation fg.deobf("com.teamabnormals:boatload:${project.boatload}")
-    implementation fg.deobf("curse.maven:neapolitan-382016:${project.neapolitan}")
+    implementation fg.deobf("curse.maven:autumnity-365045:6151402")
     implementation fg.deobf("curse.maven:farmers_delight-398521:${project.farmersDelight}")
-    implementation fg.deobf("curse.maven:autumnity-365045:${project.autumnity}")
-
+    implementation fg.deobf("curse.maven:neapolitan-382016:6248885")
+    implementation fg.deobf("curse.maven:zeta-968868:6432578")
+    implementation fg.deobf("curse.maven:quark-243121:6427817")
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
 
 repositories {
-    maven {
-        url = "https://maven.teamabnormals.com"
-    }
+    maven { url = "https://maven.teamabnormals.com"}
     maven { url "https://dvs1.progwml6.com/files/maven/" }
     maven { url "https://modmaven.k-4u.nl" }
     maven { url "https://www.cursemaven.com" }

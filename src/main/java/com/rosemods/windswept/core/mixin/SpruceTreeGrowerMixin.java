@@ -14,6 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SpruceTreeGrowerMixin {
     @Inject(method = "getConfiguredMegaFeature", at = @At("HEAD"), cancellable = true)
     private void getConfiguredMegaFeature(RandomSource rand, CallbackInfoReturnable<Holder<? extends ConfiguredFeature<?, ?>>> info) {
-        info.setReturnValue(TreeFeatures.MEGA_SPRUCE);
+        info.setReturnValue((Holder<? extends ConfiguredFeature<?, ?>>) TreeFeatures.MEGA_SPRUCE);
     }
 }

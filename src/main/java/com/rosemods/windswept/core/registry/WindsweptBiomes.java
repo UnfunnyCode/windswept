@@ -1,7 +1,7 @@
 package com.rosemods.windswept.core.registry;
 
 import com.rosemods.windswept.core.Windswept;
-import com.teamabnormals.blueprint.core.util.registry.BiomeSubRegistryHelper;
+import com.rosemods.windswept.core.registry.util.BiomeSubRegistryHelper;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.biome.OverworldBiomes;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
@@ -12,8 +12,10 @@ import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.fml.common.Mod;
 
+
 @Mod.EventBusSubscriber(modid = Windswept.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class WindsweptBiomes {
+
     public static final BiomeSubRegistryHelper HELPER = Windswept.REGISTRY_HELPER.getBiomeSubHelper();
 
     public static final BiomeSubRegistryHelper.KeyedBiome CHESTNUT_FOREST = HELPER.createBiome("chestnut_forest", () -> chestnutForest(false));
@@ -164,7 +166,7 @@ public class WindsweptBiomes {
     // Util //
     private static Biome.BiomeBuilder biome(float temp, float downfall, int waterColor, int waterFogColor, int fogColor, Biome.Precipitation precipitation, BiomeGenerationSettings.Builder generation, MobSpawnSettings.Builder spawns) {
         return new Biome.BiomeBuilder()
-                .precipitation(precipitation)
+                .hasPrecipitation(true)
                 .temperature(temp).downfall(downfall)
                 .specialEffects((new BiomeSpecialEffects.Builder())
                         .waterColor(waterColor)
@@ -175,6 +177,10 @@ public class WindsweptBiomes {
                         .backgroundMusic(OverworldBiomes.NORMAL_MUSIC).build())
                 .mobSpawnSettings(spawns.build()).generationSettings(generation.build());
 
+    }
+    public WindsweptBiomes precipitation(Biome.Precipitation p_47598_) {
+        this.precipitation = p_47598_;
+        return this;
     }
 
     private static int calculateSkyColor(float temperature) {

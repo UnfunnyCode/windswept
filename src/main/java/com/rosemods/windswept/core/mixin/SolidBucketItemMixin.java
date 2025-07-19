@@ -12,12 +12,6 @@ public class SolidBucketItemMixin extends Item {
     }
 
     @Override
-    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
-        if (this.allowedIn(tab))
-            items.add(this.getDefaultInstance());
-    }
-
-    @Override
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         return !this.hasCraftingRemainingItem() ? Items.BUCKET.getDefaultInstance() : super.getCraftingRemainingItem(itemStack);
     }

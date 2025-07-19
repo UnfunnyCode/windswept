@@ -1,20 +1,19 @@
 package com.rosemods.windswept.core;
 
-import com.rosemods.windswept.core.data.client.*;
-import com.rosemods.windswept.core.data.server.WindsweptLootTableProvider;
-import com.rosemods.windswept.core.data.server.WindsweptRecipeProvider;
-import com.rosemods.windswept.core.data.server.WindsweptStructureRepaletterProvider;
-import com.rosemods.windswept.core.data.server.modifiers.*;
-import com.rosemods.windswept.core.data.server.tags.*;
+
 import com.rosemods.windswept.core.other.*;
 import com.rosemods.windswept.core.registry.*;
+import com.rosemods.windswept.core.registry.util.BiomeSubRegistryHelper;
 import com.rosemods.windswept.core.registry.util.EffectSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -22,6 +21,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import static net.minecraft.core.Registry.BLOCK;
+import static net.minecraft.core.Registry.ITEM;
 
 @Mod(Windswept.MOD_ID)
 public class Windswept {
@@ -50,7 +52,7 @@ public class Windswept {
 
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
-        bus.addListener(this::dataSetup);
+
 
         context.registerConfig(ModConfig.Type.COMMON, WindsweptConfig.COMMON_SPEC);
         context.registerConfig(ModConfig.Type.CLIENT, WindsweptConfig.CLIENT_SPEC);
@@ -68,37 +70,19 @@ public class Windswept {
         });
     }
 
+    @SubscribeEvent
+    public void buildContents(BuildCreativeModeTabContentsEvent event) {
+
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(WindsweptItems.CHESTNUTS);
+
+        }
+    }
+
     private void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(WindsweptEntityTypes::registerClient);
     }
 
-    private void dataSetup(GatherDataEvent event) {
-        DataGenerator gen = event.getGenerator();
-
-        boolean client = event.includeClient();
-        gen.addProvider(client, new WindsweptSoundProvider(event));
-        gen.addProvider(client, new WindsweptLangProvider(event));
-        gen.addProvider(client, new WindsweptModelProvider(event));
-        gen.addProvider(client, new WindsweptSplashProvider(event));
-        gen.addProvider(client, new WindsweptParticleProvider(event));
-
-        boolean server = event.includeServer();
-        var blockTags = new WindsweptBlockTagProvider(event);
-        gen.addProvider(server, blockTags);
-        gen.addProvider(server, new WindsweptItemTagProvider(event, blockTags));
-        gen.addProvider(server, new WindsweptEntityTagProvider(event));
-        gen.addProvider(server, new WindsweptBiomeTagProvider(event));
-        gen.addProvider(server, new WindsweptBannerPatternTagProvider(event));
-        gen.addProvider(server, new WindsweptLootTableProvider(event));
-        gen.addProvider(server, new WindsweptRecipeProvider(event));
-        gen.addProvider(server, new WindsweptAdvancementModifierProvider(event));
-        gen.addProvider(server, new WindsweptLootModifierProvider(event));
-        gen.addProvider(server, new WindsweptStructureRepaletterProvider(event));
-        gen.addProvider(server, new WindsweptModdedBiomeSliceProvider(event));
-        gen.addProvider(server, new WindsweptPaintingVariantTagsProvider(event));
-        gen.addProvider(server, new WindsweptChunkGeneratorModifierProvider(event));
-        gen.addProvider(server, WindsweptBiomeModifier.register(event));
-    }
 
     public static ResourceLocation location(String id) {
         return new ResourceLocation(MOD_ID, id);
