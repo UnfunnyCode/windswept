@@ -186,7 +186,7 @@ public final class WindsweptFeatures {
         public static final RegistryObject<ConfiguredFeature<?, ?>> PINE = CONFIGURED_FEATURES.register("pine", () -> new ConfiguredFeature<>(PINE_TREE.get(), Configs.PINE_TREE));
         public static final RegistryObject<ConfiguredFeature<?, ?>> PINE_BEES = CONFIGURED_FEATURES.register("pine_bees", () -> new ConfiguredFeature<>(PINE_TREE.get(), Configs.PINE_TREE_BEES));
 
-        public static final RegistryObject<ConfiguredFeature<?, ?>> OLD_GROWTH_PINE_TAIGA_TREES = CONFIGURED_FEATURES.register("old_growth_pine_taiga_trees", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature((Holder<PlacedFeature>) TreePlacements.MEGA_SPRUCE_CHECKED, .33333334f), new WeightedPlacedFeature(Placements.PINE_CHECKED.getHolder().get(), .33333334f)), TreePlacements.SPRUCE_CHECKED)));
+        public static final RegistryObject<ConfiguredFeature<?, ?>> OLD_GROWTH_PINE_TAIGA_TREES = CONFIGURED_FEATURES.register("old_growth_pine_taiga_trees", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature((Holder<PlacedFeature>) TreePlacements.MEGA_SPRUCE_CHECKED, .33333334f), new WeightedPlacedFeature(Placements.PINE_CHECKED.getHolder().get(), .33333334f)), (Holder<PlacedFeature>) TreePlacements.SPRUCE_CHECKED)));
 
         public static final RegistryObject<ConfiguredFeature<?, ?>> SMALL_DARK_OAK = CONFIGURED_FEATURES.register("small_dark_oak", () -> new ConfiguredFeature<>(Feature.TREE, Configs.SMALL_DARK_OAK_TREE));
         public static final RegistryObject<ConfiguredFeature<?, ?>> SMALL_DARK_OAK_BEES = CONFIGURED_FEATURES.register("small_dark_oak_bees", () -> new ConfiguredFeature<>(Feature.TREE, Configs.SMALL_DARK_OAK_TREE_BEES));
@@ -302,7 +302,7 @@ public final class WindsweptFeatures {
         }
 
         private static List<PlacementModifier> treeOnSnowPlacement(PlacementModifier modifier) {
-            return List.of(modifier, InSquarePlacement.spread(), VegetationPlacements.TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8), BlockPredicateFilter.forPredicate(TreePlacements.SNOW_TREE_PREDICATE));
+            return List.of(modifier, InSquarePlacement.spread(), VegetationPlacements.TREE_THRESHOLD, PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, BiomeFilter.biome(), EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.not(BlockPredicate.matchesBlocks(Blocks.POWDER_SNOW)), 8), BlockPredicateFilter.forPredicate((BlockPredicate) TreePlacements.PINE_ON_SNOW));
         }
 
     }

@@ -37,6 +37,8 @@ import org.violetmoon.quark.content.building.block.LeafCarpetBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 import org.violetmoon.quark.content.building.block.WoodPostBlock;
 
+import java.util.function.Supplier;
+
 @Mod.EventBusSubscriber(modid = Windswept.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class WindsweptBlocks {
     public static final BlockSubRegistryHelper HELPER = Windswept.REGISTRY_HELPER.getBlockSubHelper();
@@ -146,7 +148,7 @@ public class WindsweptBlocks {
 
     public static final RegistryObject<Block> PINE_LEAVES = HELPER.createBlock("pine_leaves", () -> new LeavesBlock(Properties.PINE.leaves())     );
     public static final RegistryObject<Block> PINE_HEDGE = HELPER.createBlock("pine_hedge", () -> new HedgeBlock(Properties.PINE.planks()));
-    public static final RegistryObject<Block> PINE_LEAF_CARPET = HELPER.createBlock (   "pine_leaf_carpet", () -> new LeafCarpetBlock(PINE_LEAVES, Properties.PINE.leafCarpet(),)     );
+    public static final RegistryObject<Block> PINE_LEAF_CARPET = HELPER.createBlock (   "pine_leaf_carpet", () -> new LeafCarpetBlock(PINE_LEAVES, Properties.PINE.leafCarpet())     );
     public static final RegistryObject<Block> PINE_LEAF_PILE = HELPER.createBlock ("pine_leaf_pile", () -> new LeafPileBlock(Properties.PINE.leafPile())     );
 
     // Moss //
@@ -226,7 +228,7 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> ICICLE_BLOCK = HELPER.createBlock("icicle_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).strength(2f))     );
     public static final RegistryObject<Block> CHISELED_ICICLE_BLOCK = HELPER.createBlock("chiseled_icicle_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).strength(2f))     );
     public static final RegistryObject<Block> ICICLE_DOOR = HELPER.createBlock("icicle_door", () -> new DoorBlock(Block.Properties.of().strength(3f).sound(SoundType.GLASS).noOcclusion(), BlockSetType.SPRUCE));
-    public static final RegistryObject<Block> ICICLE_TRAPDOOR = HELPER.createBlock("icicle_trapdoor", () -> new TrapDoorBlock(Block.Properties.of().strength(3f).sound(SoundType.GLASS).noOcclusion().isValidSpawn(PropertyUtil::never), WoodType.SPRUCE.setType());
+    public static final RegistryObject<Block> ICICLE_TRAPDOOR = HELPER.createBlock("icicle_trapdoor", () -> new TrapDoorBlock(Block.Properties.of().strength(3f).sound(SoundType.GLASS).noOcclusion().isValidSpawn(PropertyUtil::never), WoodType.SPRUCE.setType()));
     public static final RegistryObject<Block> ICICLE_BARS = HELPER.createBlock("icicle_bars", () -> new IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).strength(2f))     );
     public static final RegistryObject<Block> ICE_LANTERN = HELPER.createBlock("ice_lantern", () -> new IceLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).lightLevel(s -> 13))     );
 
@@ -361,7 +363,7 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_STAIRS = HELPER.createBlock("dry_mossy_cobblestone_brick_stairs",  () -> new StairBlock(DRY_MOSSY_COBBLESTONE_BRICKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
     public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_SLAB = HELPER.createBlock("dry_mossy_cobblestone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
     public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_WALL = HELPER.createBlock("dry_mossy_cobblestone_brick_wall",  () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_VERTICAL_SLAB = HELPER.createBlock("dry_mossy_cobblestone_brick_vertical_slab", () -> new VerticalSlabBlock(Blocks.MOSSY_STONE_BRICKS, Properties.)     ,    WindsweptConstants.CAVERNS_AND_CHASMS);
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_VERTICAL_SLAB = HELPER.createBlock("dry_mossy_cobblestone_brick_vertical_slab", () -> new VerticalSlabBlock((Supplier<Block>) Blocks.MOSSY_STONE_BRICKS, Properties.SHALE));
 
     public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILES = HELPER.createBlock("dry_mossy_cobblestone_tiles",  () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
     public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_STAIRS = HELPER.createBlock("dry_mossy_cobblestone_tile_stairs",  () -> new StairBlock(DRY_MOSSY_COBBLESTONE_TILES.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));

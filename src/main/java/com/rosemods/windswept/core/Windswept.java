@@ -22,8 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static net.minecraft.core.Registry.BLOCK;
-import static net.minecraft.core.Registry.ITEM;
+
 
 @Mod(Windswept.MOD_ID)
 public class Windswept {

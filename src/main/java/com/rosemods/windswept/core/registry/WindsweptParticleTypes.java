@@ -22,8 +22,8 @@ public class WindsweptParticleTypes {
 
     @SubscribeEvent
     public static void register(RegisterParticleProvidersEvent event) {
-        event.register(CUPIDS_ARROW.get(), CupidsArrowParticle.Provider::new);
-        event.register(WILL_O_THE_WISP.get(), WillOTheWispParticle.Provider::new);
+        event.registerSpriteSet(CUPIDS_ARROW.get(), CupidsArrowParticle.Provider::new);
+        event.registerSpriteSet(WILL_O_THE_WISP.get(), WillOTheWispParticle.Provider::new);
     }
 
 }
