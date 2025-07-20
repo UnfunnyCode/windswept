@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
+import org.violetmoon.quark.base.handler.WoodSetHandler;
 import org.violetmoon.quark.content.building.block.LeafCarpetBlock;
 import org.violetmoon.quark.content.building.block.VerticalSlabBlock;
 import org.violetmoon.quark.content.building.block.WoodPostBlock;
@@ -43,12 +44,12 @@ public class WindsweptBlocks {
     // Holly //
     public static final RegistryObject<Block> HOLLY_LOG = HELPER.createBlock("holly_log", () -> new LogBlock(WindsweptBlocks.STRIPPED_HOLLY_LOG, Properties.HOLLY.log()));
     public static final RegistryObject<Block> HOLLY_WOOD = HELPER.createBlock("holly_wood", () -> new WoodBlock(WindsweptBlocks.STRIPPED_HOLLY_WOOD, Properties.HOLLY.log()));
-    public static final RegistryObject<Block> STRIPPED_HOLLY_LOG = HELPER.createBlock("stripped_holly_log", () -> new LogBlock(Properties.HOLLY.log()));
-    public static final RegistryObject<Block> STRIPPED_HOLLY_WOOD = HELPER.createBlock("stripped_holly_wood", () -> new WoodBlock(Properties.HOLLY.log()));
+    public static final RegistryObject<Block> STRIPPED_HOLLY_LOG = HELPER.createBlock("stripped_holly_log", () -> new LogBlock(HOLLY_LOG, Properties.HOLLY.log()));
+    public static final RegistryObject<Block> STRIPPED_HOLLY_WOOD = HELPER.createBlock("stripped_holly_wood", () -> new WoodBlock(HOLLY_WOOD, Properties.HOLLY.log()));
     public static final RegistryObject<Block> HOLLY_PLANKS = HELPER.createBlock("holly_planks", () -> new Block(Properties.HOLLY.planks()));
     public static final RegistryObject<Block> HOLLY_STAIRS = HELPER.createBlock("holly_stairs", () -> new StairBlock(HOLLY_PLANKS.get().defaultBlockState(), Properties.HOLLY.planks()));
     public static final RegistryObject<Block> HOLLY_SLAB = HELPER.createBlock("holly_slab", () -> new SlabBlock(Properties.HOLLY.planks())     );
-    public static final RegistryObject<Block> HOLLY_VERTICAL_SLAB = HELPER.createFuelBlock(   "holly_vertical_slab", () -> new VerticalSlabBlock(Properties.HOLLY.planks()), 150);
+    public static final RegistryObject<Block> HOLLY_VERTICAL_SLAB = HELPER.createFuelBlock(   "holly_vertical_slab", () -> new VerticalSlabBlock(HOLLY_PLANKS, Properties.HOLLY.planks()), 150);
     public static final RegistryObject<Block> HOLLY_FENCE = HELPER.createFuelBlock("holly_fence", () -> new FenceBlock(Properties.HOLLY.planks()), 300);
     public static final RegistryObject<Block> HOLLY_FENCE_GATE = HELPER.createFuelBlock("holly_fence_gate", () -> new FenceGateBlock(Properties.HOLLY.planks(), WoodType.SPRUCE), 300);
     public static final RegistryObject<Block> HOLLY_PRESSURE_PLATE = HELPER.createBlock("holly_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Properties.HOLLY.pressurePlate(),BlockSetType.SPRUCE));
@@ -78,32 +79,32 @@ public class WindsweptBlocks {
     // Chestnut //
     public static final RegistryObject<Block> CHESTNUT_LOG = HELPER.createBlock("chestnut_log", () -> new LogBlock(WindsweptBlocks.STRIPPED_CHESTNUT_LOG, Properties.CHESTNUT.log()));
     public static final RegistryObject<Block> CHESTNUT_WOOD = HELPER.createBlock("chestnut_wood", () -> new WoodBlock(WindsweptBlocks.STRIPPED_CHESTNUT_WOOD, Properties.CHESTNUT.log()));
-    public static final RegistryObject<Block> STRIPPED_CHESTNUT_LOG = HELPER.createBlock("stripped_chestnut_log", () -> new LogBlock(Properties.CHESTNUT.log()));
-    public static final RegistryObject<Block> STRIPPED_CHESTNUT_WOOD = HELPER.createBlock("stripped_chestnut_wood", () -> new WoodBlock(Properties.CHESTNUT.log()));
+    public static final RegistryObject<Block> STRIPPED_CHESTNUT_LOG = HELPER.createBlock("stripped_chestnut_log", () -> new LogBlock(CHESTNUT_LOG, Properties.CHESTNUT.log()));
+    public static final RegistryObject<Block> STRIPPED_CHESTNUT_WOOD = HELPER.createBlock("stripped_chestnut_wood", () -> new WoodBlock(CHESTNUT_WOOD, Properties.CHESTNUT.log()));
     public static final RegistryObject<Block> CHESTNUT_PLANKS = HELPER.createBlock("chestnut_planks", () -> new Block(Properties.CHESTNUT.planks()));
     public static final RegistryObject<Block> CHESTNUT_STAIRS = HELPER.createBlock("chestnut_stairs", () -> new StairBlock(CHESTNUT_PLANKS.get().defaultBlockState(), Properties.CHESTNUT.planks()));
     public static final RegistryObject<Block> CHESTNUT_SLAB = HELPER.createBlock("chestnut_slab", () -> new SlabBlock(Properties.CHESTNUT.planks()));
-    public static final RegistryObject<Block> CHESTNUT_VERTICAL_SLAB = HELPER.createFuelBlock(   "chestnut_vertical_slab", () -> new VerticalSlabBlock(Properties.CHESTNUT.planks()), 150     );
+    public static final RegistryObject<Block> CHESTNUT_VERTICAL_SLAB = HELPER.createFuelBlock(   "chestnut_vertical_slab", () -> new VerticalSlabBlock(CHESTNUT_PLANKS, Properties.CHESTNUT.planks()), 150     );
     public static final RegistryObject<Block> CHESTNUT_FENCE = HELPER.createFuelBlock("chestnut_fence", () -> new FenceBlock(Properties.CHESTNUT.planks()), 300     );
-    public static final RegistryObject<Block> CHESTNUT_FENCE_GATE = HELPER.createFuelBlock("chestnut_fence_gate", () -> new FenceGateBlock(Properties.CHESTNUT.planks()), 300);
+    public static final RegistryObject<Block> CHESTNUT_FENCE_GATE = HELPER.createFuelBlock("chestnut_fence_gate", () -> new FenceGateBlock(Properties.CHESTNUT.planks(),WoodType.SPRUCE), 300);
     public static final RegistryObject<Block> CHESTNUT_PRESSURE_PLATE = HELPER.createBlock("chestnut_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Properties.CHESTNUT.pressurePlate(), WoodType.SPRUCE.setType()));
-    public static final RegistryObject<Block> CHESTNUT_BUTTON = HELPER.createBlock("chestnut_button", () -> new ButtonBlock(Properties.CHESTNUT.button()));
-    public static final RegistryObject<Block> CHESTNUT_DOOR = HELPER.createBlock("chestnut_door", () -> new DoorBlock(Properties.CHESTNUT.door()));
-    public static final RegistryObject<Block> CHESTNUT_TRAPDOOR = HELPER.createBlock("chestnut_trapdoor", () -> new TrapDoorBlock(Properties.CHESTNUT.trapdoor()));
-    public static final Pair<RegistryObject<BlueprintStandingSignBlock>, RegistryObject<BlueprintWallSignBlock>> CHESTNUT_SIGNS = HELPER.createSignBlock("chestnut", MaterialColor.COLOR_BROWN);
+    public static final RegistryObject<Block> CHESTNUT_BUTTON = HELPER.createBlock("chestnut_button", () -> new ButtonBlock(Properties.CHESTNUT.button(),BlockSetType.SPRUCE,2,true));
+    public static final RegistryObject<Block> CHESTNUT_DOOR = HELPER.createBlock("chestnut_door", () -> new DoorBlock(Properties.CHESTNUT.door(), BlockSetType.SPRUCE));
+    public static final RegistryObject<Block> CHESTNUT_TRAPDOOR = HELPER.createBlock("chestnut_trapdoor", () -> new TrapDoorBlock(Properties.CHESTNUT.trapdoor(), BlockSetType.SPRUCE));
+    public static final Pair<RegistryObject<BlueprintStandingSignBlock>, RegistryObject<BlueprintWallSignBlock>> CHESTNUT_SIGNS = HELPER.createSignBlock("chestnut", WoodType.SPRUCE, Properties.CHESTNUT.sign());
     public static final RegistryObject<Block> CHESTNUT_SAPLING = HELPER.createBlock("chestnut_sapling", () -> new SaplingBlock(new ChestnutTreeGrower(), PropertyUtil.sapling())     );
     public static final RegistryObject<Block> POTTED_CHESTNUT_SAPLING = HELPER.createBlockNoItem("potted_chestnut_sapling", () -> new FlowerPotBlock(CHESTNUT_SAPLING.get(), PropertyUtil.flowerPot()));
 
     public static final RegistryObject<Block> VERTICAL_CHESTNUT_PLANKS = HELPER.createBlock (   "vertical_chestnut_planks", () -> new Block(Properties.CHESTNUT.planks())     );
     public static final RegistryObject<Block> CHESTNUT_BEEHIVE = HELPER.createBlock ("chestnut_beehive", () -> new BlueprintBeehiveBlock(Properties.CHESTNUT.beehive())     );
-    public static final RegistryObject<Block> CHESTNUT_LADDER = HELPER.createFuelBlock("chestnut_ladder", () -> new LadderBlock(Properties.CHESTNUT.ladder()), 300, ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_DECORATIONS : null);
-    public static final RegistryObject<Block> CHESTNUT_BOOKSHELF = HELPER.createFuelBlock("chestnut_bookshelf", () -> new Block(Properties.CHESTNUT.bookshelf()), 300, ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_BUILDING_BLOCKS : null);
+    public static final RegistryObject<Block> CHESTNUT_LADDER = HELPER.createFuelBlock("chestnut_ladder", () -> new LadderBlock(Properties.CHESTNUT.ladder()), 300);
+    public static final RegistryObject<Block> CHESTNUT_BOOKSHELF = HELPER.createFuelBlock("chestnut_bookshelf", () -> new Block(Properties.CHESTNUT.bookshelf()), 300);
     public static final RegistryObject<Block> CHESTNUT_BOARDS = HELPER.createBlock ("chestnut_boards", () -> new RotatedPillarBlock(Properties.CHESTNUT.planks())     );
     public static final RegistryObject<Block> CHESTNUT_CABINET = HELPER.createFuelBlock("chestnut_cabinet", ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.FARMERSDELIGHT) ? WindsweptFDCompat.CABINET_SUPPLIER : () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)), 300     );
     public static final RegistryObject<Block> CHESTNUT_POST = HELPER.createFuelBlock(   "chestnut_post", () -> new WoodPostBlock(WindsweptBlocks.STRIPPED_CHESTNUT_POST, Properties.CHESTNUT.post()), 300     );
     public static final RegistryObject<Block> STRIPPED_CHESTNUT_POST = HELPER.createFuelBlock(   "stripped_chestnut_post", () -> new WoodPostBlock(Properties.CHESTNUT.post()), 300     );
-    public static final RegistryObject<BlueprintChestBlock> CHESTNUT_CHEST = HELPER.createChestBlock("chestnut", Properties.CHESTNUT.chest(), ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_DECORATIONS : null);
-    public static final RegistryObject<BlueprintTrappedChestBlock> CHESTNUT_TRAPPED_CHEST = HELPER.createTrappedChestBlock("chestnut", Properties.CHESTNUT.chest(), ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_REDSTONE : null);
+    public static final RegistryObject<BlueprintChestBlock> CHESTNUT_CHEST = HELPER.createChestBlock("chestnut", Properties.CHESTNUT.chest());
+    public static final RegistryObject<BlueprintTrappedChestBlock> CHESTNUT_TRAPPED_CHEST = HELPER.createTrappedChestBlock("chestnut", Properties.CHESTNUT.chest());
 
     public static final RegistryObject<Block> CHESTNUT_LEAVES = HELPER.createBlock("chestnut_leaves", () -> new LeavesBlock(Properties.CHESTNUT.leaves())     );
     public static final RegistryObject<Block> CHESTNUT_HEDGE = HELPER.createFuelBlock(   "chestnut_hedge", () -> new HedgeBlock(Properties.CHESTNUT.planks()), 300     );
@@ -115,49 +116,49 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> PINE_WOOD = HELPER.createBlock("pine_wood", () -> new WoodBlock(WindsweptBlocks.WEATHERED_PINE_WOOD, Properties.PINE.log())     );
     public static final RegistryObject<Block> WEATHERED_PINE_LOG = HELPER.createBlock("weathered_pine_log", () -> new LogBlock(WindsweptBlocks.STRIPPED_PINE_LOG, Properties.PINE.log())     );
     public static final RegistryObject<Block> WEATHERED_PINE_WOOD = HELPER.createBlock("weathered_pine_wood", () -> new WoodBlock(WindsweptBlocks.STRIPPED_PINE_WOOD, Properties.PINE.log())     );
-    public static final RegistryObject<Block> STRIPPED_PINE_LOG = HELPER.createBlock("stripped_pine_log", () -> new LogBlock(Properties.PINE.log())     );
-    public static final RegistryObject<Block> STRIPPED_PINE_WOOD = HELPER.createBlock("stripped_pine_wood", () -> new WoodBlock(Properties.PINE.log())     );
+    public static final RegistryObject<Block> STRIPPED_PINE_LOG = HELPER.createBlock("stripped_pine_log", () -> new LogBlock(PINE_LOG, Properties.PINE.log())     );
+    public static final RegistryObject<Block> STRIPPED_PINE_WOOD = HELPER.createBlock("stripped_pine_wood", () -> new WoodBlock(PINE_WOOD, Properties.PINE.log())     );
     public static final RegistryObject<Block> PINE_PLANKS = HELPER.createBlock("pine_planks", () -> new Block(Properties.PINE.planks())     );
     public static final RegistryObject<Block> PINE_STAIRS = HELPER.createBlock("pine_stairs", () -> new StairBlock(PINE_PLANKS.get().defaultBlockState(), Properties.PINE.planks())     );
     public static final RegistryObject<Block> PINE_SLAB = HELPER.createBlock("pine_slab", () -> new SlabBlock(Properties.PINE.planks())     );
-    public static final RegistryObject<Block> PINE_VERTICAL_SLAB = HELPER.createFuelBlock(   "pine_vertical_slab", () -> new VerticalSlabBlock(Properties.PINE.planks()), 150     );
+    public static final RegistryObject<Block> PINE_VERTICAL_SLAB = HELPER.createFuelBlock(   "pine_vertical_slab", () -> new VerticalSlabBlock(PINE_PLANKS, Properties.PINE.planks()), 150     );
     public static final RegistryObject<Block> PINE_FENCE = HELPER.createFuelBlock("pine_fence", () -> new FenceBlock(Properties.PINE.planks()), 300     );
     public static final RegistryObject<Block> PINE_FENCE_GATE = HELPER.createFuelBlock("pine_fence_gate", () -> new FenceGateBlock(Properties.PINE.planks(), WoodType.SPRUCE), 300);
     public static final RegistryObject<Block> PINE_PRESSURE_PLATE = HELPER.createBlock("pine_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Properties.PINE.pressurePlate(), WoodType.SPRUCE.setType()));
     public static final RegistryObject<Block> PINE_BUTTON = HELPER.createBlock("pine_button", () -> new ButtonBlock(Properties.PINE.button(), WoodType.SPRUCE.setType(),3,true));
-    public static final RegistryObject<Block> PINE_DOOR = HELPER.createBlock("pine_door", () -> new DoorBlock(Properties.PINE.door()));
-    public static final RegistryObject<Block> PINE_TRAPDOOR = HELPER.createBlock("pine_trapdoor", () -> new TrapDoorBlock(Properties.PINE.trapdoor()));
+    public static final RegistryObject<Block> PINE_DOOR = HELPER.createBlock("pine_door", () -> new DoorBlock(Properties.PINE.door(), WoodType.SPRUCE.setType()));
+    public static final RegistryObject<Block> PINE_TRAPDOOR = HELPER.createBlock("pine_trapdoor", () -> new TrapDoorBlock(Properties.PINE.trapdoor(), WoodType.SPRUCE.setType()));
     public static final Pair<RegistryObject<BlueprintStandingSignBlock>, RegistryObject<BlueprintWallSignBlock>> PINE_SIGNS = HELPER.createSignBlock("pine", WoodType.SPRUCE, Properties.PINE.sign());
     public static final RegistryObject<Block> PINE_SAPLING = HELPER.createBlock("pine_sapling", () -> new SaplingBlock(new PineTreeGrower(), PropertyUtil.sapling())     );
     public static final RegistryObject<Block> POTTED_PINE_SAPLING = HELPER.createBlockNoItem("potted_pine_sapling", () -> new FlowerPotBlock(PINE_SAPLING.get(), PropertyUtil.flowerPot()));
 
     public static final RegistryObject<Block> VERTICAL_PINE_PLANKS = HELPER.createBlock("vertical_pine_planks", () -> new Block(Properties.PINE.planks())     );
     public static final RegistryObject<Block> PINE_BEEHIVE = HELPER.createBlock("pine_beehive", () -> new BlueprintBeehiveBlock(Properties.PINE.beehive())     );
-    public static final RegistryObject<Block> PINE_LADDER = HELPER.createFuelBlock("pine_ladder", () -> new LadderBlock(Properties.PINE.ladder()), 300, ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_DECORATIONS : null);
-    public static final RegistryObject<Block> PINE_BOOKSHELF = HELPER.createFuelBlock("pine_bookshelf", () -> new Block(Properties.PINE.bookshelf()), 300, ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_BUILDING_BLOCKS : null);
+    public static final RegistryObject<Block> PINE_LADDER = HELPER.createFuelBlock("pine_ladder", () -> new LadderBlock(Properties.PINE.ladder()), 300);
+    public static final RegistryObject<Block> PINE_BOOKSHELF = HELPER.createFuelBlock("pine_bookshelf", () -> new Block(Properties.PINE.bookshelf()), 300);
     public static final RegistryObject<Block> PINE_BOARDS = HELPER.createBlock("pine_boards", () -> new RotatedPillarBlock(Properties.PINE.planks()));
     public static final RegistryObject<Block> PINE_CABINET = HELPER.createFuelBlock("pine_cabinet", ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.FARMERSDELIGHT) ? WindsweptFDCompat.CABINET_SUPPLIER : () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)), 300     );
     public static final RegistryObject<Block> PINE_POST = HELPER.createFuelBlock("pine_post", () -> new WoodPostBlock(WindsweptBlocks.WEATHERED_PINE_POST, Properties.PINE.post()), 300     );
     public static final RegistryObject<Block> WEATHERED_PINE_POST = HELPER.createFuelBlock("weathered_pine_post", () -> new WoodPostBlock(WindsweptBlocks.STRIPPED_PINE_POST, Properties.PINE.post()), 300     );
     public static final RegistryObject<Block> STRIPPED_PINE_POST = HELPER.createFuelBlock("stripped_pine_post", () -> new WoodPostBlock(Properties.PINE.post()), 300     );
     public static final RegistryObject<BlueprintChestBlock> PINE_CHEST = HELPER.createChestBlock("pine", Properties.PINE.chest());
-    public static final RegistryObject<BlueprintTrappedChestBlock> PINE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("pine", Properties.PINE.chest(), ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.QUARK) || ItemSubRegistryHelper.areModsLoaded(WindsweptConstants.WOODWORKS) ? CreativeModeTab.TAB_REDSTONE : null);
+    public static final RegistryObject<BlueprintTrappedChestBlock> PINE_TRAPPED_CHEST = HELPER.createTrappedChestBlock("pine", Properties.PINE.chest());
 
     public static final RegistryObject<Block> PINE_LEAVES = HELPER.createBlock("pine_leaves", () -> new LeavesBlock(Properties.PINE.leaves())     );
     public static final RegistryObject<Block> PINE_HEDGE = HELPER.createBlock("pine_hedge", () -> new HedgeBlock(Properties.PINE.planks()));
-    public static final RegistryObject<Block> PINE_LEAF_CARPET = HELPER.createBlock (   "pine_leaf_carpet", () -> new LeafCarpetBlock(Properties.PINE.leafCarpet())     );
+    public static final RegistryObject<Block> PINE_LEAF_CARPET = HELPER.createBlock (   "pine_leaf_carpet", () -> new LeafCarpetBlock(PINE_LEAVES, Properties.PINE.leafCarpet(),)     );
     public static final RegistryObject<Block> PINE_LEAF_PILE = HELPER.createBlock ("pine_leaf_pile", () -> new LeafPileBlock(Properties.PINE.leafPile())     );
 
     // Moss //
-    public static final RegistryObject<Block> MOSSY_SPROUTS = HELPER.createInjectedBlock("mossy_sprouts", Items.SEA_PICKLE, () -> new SproutsBlock(Properties.SPROUTS)     );
-    public static final RegistryObject<Block> DRY_MOSSY_SPROUTS = HELPER.createInjectedBlock("dry_mossy_sprouts", Items.SEA_PICKLE, () -> new SproutsBlock(Properties.SPROUTS)     );
-    public static final RegistryObject<Block> DRY_MOSS_CARPET = HELPER.createInjectedBlock("dry_moss_carpet", Items.MOSS_BLOCK, () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_CARPET))     );
-    public static final RegistryObject<Block> DRY_MOSS_BLOCK = HELPER.createInjectedBlock("dry_moss_block", Items.MOSS_BLOCK, () -> new DryMossBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK))     );
+    public static final RegistryObject<Block> MOSSY_SPROUTS = HELPER.createBlock("mossy_sprouts", () -> new SproutsBlock(Properties.SPROUTS)     );
+    public static final RegistryObject<Block> DRY_MOSSY_SPROUTS = HELPER.createBlock("dry_mossy_sprouts", () -> new SproutsBlock(Properties.SPROUTS)     );
+    public static final RegistryObject<Block> DRY_MOSS_CARPET = HELPER.createBlock("dry_moss_carpet", () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_CARPET))     );
+    public static final RegistryObject<Block> DRY_MOSS_BLOCK = HELPER.createBlock("dry_moss_block", () -> new DryMossBlock(BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK))     );
 
     // Gelisol Blocks //
-    public static final RegistryObject<Block> GELISOL_SPROUTS = HELPER.createInjectedBlock("gelisol_sprouts", Items.SEA_PICKLE, () -> new SproutsBlock(Properties.SPROUTS)     );
-    public static final RegistryObject<Block> GELISOL = HELPER.createInjectedBlock("gelisol", Items.PODZOL, () -> new GelisolBlock(BlockBehaviour.Properties.copy(Blocks.PODZOL))     );
-    public static final RegistryObject<Block> GELISOL_PATH = HELPER.createInjectedBlock("gelisol_path", Items.DIRT_PATH, () -> new DirtPathBlock(BlockBehaviour.Properties.copy(Blocks.DIRT_PATH))     );
+    public static final RegistryObject<Block> GELISOL_SPROUTS = HELPER.createBlock("gelisol_sprouts", () -> new SproutsBlock(Properties.SPROUTS)     );
+    public static final RegistryObject<Block> GELISOL = HELPER.createBlock("gelisol", () -> new GelisolBlock(BlockBehaviour.Properties.copy(Blocks.PODZOL))     );
+    public static final RegistryObject<Block> GELISOL_PATH = HELPER.createBlock("gelisol_path", () -> new DirtPathBlock(BlockBehaviour.Properties.copy(Blocks.DIRT_PATH))     );
 
     // Plants //
     public static final RegistryObject<Block> RED_ROSE = HELPER.createBlock("red_rose", () -> new RoseFlowerBlock(WindsweptBlocks.RED_ROSE_BUSH, () -> MobEffects.WITHER, 5, PropertyUtil.flower())     );
@@ -166,7 +167,7 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> YELLOW_ROSE = HELPER.createBlock("yellow_rose", () -> new RoseFlowerBlock(WindsweptBlocks.YELLOW_ROSE_BUSH, () -> MobEffects.WITHER, 5, PropertyUtil.flower())     );
     public static final RegistryObject<Block> FOXGLOVE = HELPER.createBlock("foxglove", () -> new FlowerBlock(() -> MobEffects.MOVEMENT_SPEED, 5, PropertyUtil.flower())     );
     public static final RegistryObject<Block> BLUEBELLS = HELPER.createBlock("bluebells", () -> new FlowerBlock(() -> MobEffects.SLOW_FALLING, 5, PropertyUtil.flower())     );
-    public static final RegistryObject<Block> SNOWY_SPROUTS = HELPER.createBlock("snowy_sprouts", Items.SEA_PICKLE, () -> new SproutsBlock(Properties.SPROUTS)     );
+    public static final RegistryObject<Block> SNOWY_SPROUTS = HELPER.createBlock("snowy_sprouts", () -> new SproutsBlock(Properties.SPROUTS)     );
     public static final RegistryObject<Block> SNOWDROP = HELPER.createBlock("snowdrop", () -> new SnowdropBlock(WindsweptEffects.FROST_RESISTANCE, 5, PropertyUtil.flower().sound(SoundType.NETHER_SPROUTS))     );
     public static final RegistryObject<Block> MOSS_CAMPION = HELPER.createBlock("moss_campion", () -> new MossCampionBlock(WindsweptEffects.THORNS, 5, PropertyUtil.flower().sound(SoundType.AZALEA))     );
     public static final RegistryObject<Block> WILD_GINGER = HELPER.createBlock("wild_ginger", () -> new FlowerBlock(WindsweptEffects.PLENTY, 5, PropertyUtil.flower())     );
@@ -174,10 +175,10 @@ public class WindsweptBlocks {
 
     // Tall Flowers//
     public static final RegistryObject<Block> LUPINE = HELPER.createBlock("lupine", () -> new TallFlowerBlock(PropertyUtil.flower()));
-    public static final RegistryObject<Block> RED_ROSE_BUSH = HELPER.createInjectedBlock("red_rose_bush", Items.ROSE_BUSH, () -> new TallFlowerBlock(PropertyUtil.flower())     );
-    public static final RegistryObject<Block> BLUE_ROSE_BUSH = HELPER.createInjectedBlock("blue_rose_bush", Items.ROSE_BUSH, () -> new TallFlowerBlock(PropertyUtil.flower())     );
-    public static final RegistryObject<Block> WHITE_ROSE_BUSH = HELPER.createInjectedBlock("white_rose_bush", Items.ROSE_BUSH, () -> new TallFlowerBlock(PropertyUtil.flower())     );
-    public static final RegistryObject<Block> YELLOW_ROSE_BUSH = HELPER.createInjectedBlock("yellow_rose_bush", Items.ROSE_BUSH, () -> new TallFlowerBlock(PropertyUtil.flower())     );
+    public static final RegistryObject<Block> RED_ROSE_BUSH = HELPER.createBlock("red_rose_bush", () -> new TallFlowerBlock(PropertyUtil.flower())     );
+    public static final RegistryObject<Block> BLUE_ROSE_BUSH = HELPER.createBlock("blue_rose_bush", () -> new TallFlowerBlock(PropertyUtil.flower())     );
+    public static final RegistryObject<Block> WHITE_ROSE_BUSH = HELPER.createBlock("white_rose_bush", () -> new TallFlowerBlock(PropertyUtil.flower())     );
+    public static final RegistryObject<Block> YELLOW_ROSE_BUSH = HELPER.createBlock("yellow_rose_bush", () -> new TallFlowerBlock(PropertyUtil.flower())     );
 
     // Lavender //
     public static final RegistryObject<Block> LAVENDER = HELPER.createBlock("lavender", () -> new LavenderBlock(PropertyUtil.flower().sound(SoundType.AZALEA).randomTicks())     );
@@ -192,7 +193,7 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> PINECONE_WREATH = HELPER.createBlockWithItem("pinecone_wreath", () -> new WallDecorationBlock(Block.Properties.of().instabreak().sound(SoundType.AZALEA).noCollission()), () -> new WearableBlockItem(WindsweptBlocks.PINECONE_WREATH.get(), new Item.Properties()));
     public static final RegistryObject<Block> VINE_WREATH = HELPER.createBlockWithItem("vine_wreath", () -> new WallDecorationBlock(Block.Properties.of().instabreak().sound(SoundType.AZALEA).noCollission()), () -> new WearableBlockItem(WindsweptBlocks.VINE_WREATH.get(), new Item.Properties()));
     public static final RegistryObject<Block> CHERRY_WREATH = HELPER.createBlockWithItem("cherry_wreath", () -> new WallDecorationBlock(Block.Properties.of().instabreak().sound(SoundType.AZALEA).noCollission()), () -> new WearableBlockItem(WindsweptBlocks.CHERRY_WREATH.get(), new Item.Properties()));
-    public static final RegistryObject<Block> CHRISTMAS_PUDDING = HELPER.createInjectedBlock("christmas_pudding", Items.CAKE, () -> new ChristmasPuddingBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).noOcclusion()));
+    public static final RegistryObject<Block> CHRISTMAS_PUDDING = HELPER.createBlock("christmas_pudding", () -> new ChristmasPuddingBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).noOcclusion()));
     public static final RegistryObject<Block> FROSTBITER_TROPHY = HELPER.createBlock("frostbiter_trophy", () -> new WallDecorationBlock(Properties.HOLLY.ladder().sound(SoundType.WOOD))     );
     public static final RegistryObject<Block> ICE_SHEET = HELPER.createBlock("ice_sheet", () -> new IceSheetBlock(BlockBehaviour.Properties.of().strength(.3f).sound(SoundType.GLASS).noOcclusion().friction(.98f))     );
 
@@ -203,25 +204,25 @@ public class WindsweptBlocks {
 
     public static final RegistryObject<Block> FAIRY_LIGHT = HELPER.createBlock("fairy_light", () -> new PineconeBlock(BlockBehaviour.Properties.copy(PINECONE.get()).lightLevel(s -> 14))     );
     public static final RegistryObject<Block> SOUL_FAIRY_LIGHT = HELPER.createBlock("soul_fairy_light", () -> new PineconeBlock(BlockBehaviour.Properties.copy(PINECONE.get()).lightLevel(s -> 10))     );
-    public static final RegistryObject<Block> CUPRIC_FAIRY_LIGHT = HELPER.createBlock (WindsweptConstants.CAVERNS_AND_CHASMS, "cupric_fairy_light", () -> new PineconeBlock(BlockBehaviour.Properties.copy(PINECONE.get()).lightLevel(s -> 10))     );
-    public static final RegistryObject<Block> ENDER_FAIRY_LIGHT = HELPER.createBlock (WindsweptConstants.ENDERGETIC, "ender_fairy_light", () -> new PineconeBlock(BlockBehaviour.Properties.copy(PINECONE.get()).lightLevel(s -> 14))     );
+    public static final RegistryObject<Block> CUPRIC_FAIRY_LIGHT = HELPER.createBlock ("cupric_fairy_light", () -> new PineconeBlock(BlockBehaviour.Properties.copy(PINECONE.get()).lightLevel(s -> 10))     );
+    public static final RegistryObject<Block> ENDER_FAIRY_LIGHT = HELPER.createBlock ("ender_fairy_light", () -> new PineconeBlock(BlockBehaviour.Properties.copy(PINECONE.get()).lightLevel(s -> 14))     );
 
     public static final RegistryObject<Block> FEATHER_WING = HELPER.createBlock("feather_wing", () -> new FeatherWingBlock(Block.Properties.of().strength(.1f).noOcclusion().noCollission().sound(WindsweptSoundTypes.PINECONE))     );
     public static final RegistryObject<Block> FEATHER_ORNAMENT = HELPER.createBlock("feather_ornament", () -> new FeatherOrnamentBlock(Properties.FEATHER_ORNAMENT)     );
     public static final RegistryObject<Block> DREAM_CATCHER = HELPER.createBlock("dream_catcher", () -> new DreamCatcherBlock(Properties.FEATHER_ORNAMENT)     );
 
     public static final RegistryObject<Block> PINECONE_BLOCK = HELPER.createBlock("pinecone_block", () -> new PineconeBlockBlock(Properties.PINECONE_BLOCK)     );
-    public static final RegistryObject<Block> CARVED_PINECONE_BLOCK = HELPER.createBlockWithItem("carved_pinecone_block", () -> new CarvedPineconeBlock(BlockBehaviour.Properties.copy(PINECONE_BLOCK.get()).randomTicks()), () -> new WearableBlockItem(WindsweptBlocks.CARVED_PINECONE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+    public static final RegistryObject<Block> CARVED_PINECONE_BLOCK = HELPER.createBlockWithItem("carved_pinecone_block", () -> new CarvedPineconeBlock(BlockBehaviour.Properties.copy(PINECONE_BLOCK.get()).randomTicks()), () -> new WearableBlockItem(WindsweptBlocks.CARVED_PINECONE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Block> WILL_O_THE_WISP = HELPER.createBlock("will_o_the_wisp", () -> new WillOTheWispBlock(BlockBehaviour.Properties.copy(PINECONE_BLOCK.get()).lightLevel(s -> 10))     );
 
     public static final RegistryObject<Block> PINECONE_SHINGLES = HELPER.createBlock("pinecone_shingles", () -> new Block(Properties.PINECONE_BLOCK)     );
     public static final RegistryObject<Block> PINECONE_SHINGLE_STAIRS = HELPER.createBlock("pinecone_shingle_stairs", () -> new StairBlock(PINECONE_SHINGLES.get()::defaultBlockState, Properties.PINECONE_BLOCK)     );
     public static final RegistryObject<Block> PINECONE_SHINGLE_SLAB = HELPER.createBlock("pinecone_shingle_slab", () -> new SlabBlock(Properties.PINECONE_BLOCK)     );
     public static final RegistryObject<Block> PINECONE_SHINGLE_WALL = HELPER.createBlock("pinecone_shingle_wall", () -> new WallBlock(Properties.PINECONE_BLOCK)     );
-    public static final RegistryObject<Block> PINECONE_SHINGLE_VERTICAL_SLAB = HELPER.createBlock("pinecone_shingle_vertical_slab", () -> new VerticalSlabBlock(Properties.PINECONE_BLOCK)     );
+    public static final RegistryObject<Block> PINECONE_SHINGLE_VERTICAL_SLAB = HELPER.createBlock("pinecone_shingle_vertical_slab", () -> new VerticalSlabBlock(PINECONE_BLOCK, Properties.PINECONE_BLOCK)     );
 
     // Icicle Blocks //
-    public static final RegistryObject<Block> ICICLES = HELPER.createInjectedBlock("icicles", Items.HANGING_ROOTS, () -> new IciclesBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).noOcclusion())     );
+    public static final RegistryObject<Block> ICICLES = HELPER.createBlock("icicles", () -> new IciclesBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).noOcclusion())     );
     public static final RegistryObject<Block> ICICLE_BLOCK = HELPER.createBlock("icicle_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).strength(2f))     );
     public static final RegistryObject<Block> CHISELED_ICICLE_BLOCK = HELPER.createBlock("chiseled_icicle_block", () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.PACKED_ICE).strength(2f))     );
     public static final RegistryObject<Block> ICICLE_DOOR = HELPER.createBlock("icicle_door", () -> new DoorBlock(Block.Properties.of().strength(3f).sound(SoundType.GLASS).noOcclusion(), BlockSetType.SPRUCE));
@@ -230,17 +231,17 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> ICE_LANTERN = HELPER.createBlock("ice_lantern", () -> new IceLanternBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).lightLevel(s -> 13))     );
 
     // Shale //
-    public static final RegistryObject<Block> SHALE = HELPER.createInjectedBlock("shale", Items.POLISHED_ANDESITE, () -> new Block(Properties.SHALE));
-    public static final RegistryObject<Block> SHALE_STAIRS = HELPER.createInjectedBlock("shale_stairs", Items.POLISHED_ANDESITE_STAIRS, () -> new StairBlock(SHALE.get()::defaultBlockState, Properties.SHALE)     );
-    public static final RegistryObject<Block> SHALE_SLAB = HELPER.createInjectedBlock("shale_slab", Items.POLISHED_ANDESITE_SLAB, () -> new SlabBlock(Properties.SHALE));
-    public static final RegistryObject<Block> SHALE_WALL = HELPER.createInjectedBlock("shale_wall", Items.ANDESITE_WALL, () -> new WallBlock(Properties.SHALE));
-    public static final RegistryObject<Block> SHALE_VERTICAL_SLAB = HELPER.createBlock (   "shale_vertical_slab", () -> new VerticalSlabBlock(Properties.SHALE));
+    public static final RegistryObject<Block> SHALE = HELPER.createBlock("shale", () -> new Block(Properties.SHALE));
+    public static final RegistryObject<Block> SHALE_STAIRS = HELPER.createBlock("shale_stairs", () -> new StairBlock(SHALE.get()::defaultBlockState, Properties.SHALE)     );
+    public static final RegistryObject<Block> SHALE_SLAB = HELPER.createBlock("shale_slab", () -> new SlabBlock(Properties.SHALE));
+    public static final RegistryObject<Block> SHALE_WALL = HELPER.createBlock("shale_wall", () -> new WallBlock(Properties.SHALE));
+    public static final RegistryObject<Block> SHALE_VERTICAL_SLAB = HELPER.createBlock (   "shale_vertical_slab", () -> new VerticalSlabBlock(SHALE,Properties.SHALE));
 
-    public static final RegistryObject<Block> POLISHED_SHALE = HELPER.createInjectedBlock("polished_shale", Items.POLISHED_ANDESITE, () -> new Block(Properties.SHALE));
-    public static final RegistryObject<Block> POLISHED_SHALE_STAIRS = HELPER.createInjectedBlock("polished_shale_stairs", Items.POLISHED_ANDESITE_STAIRS, () -> new StairBlock(POLISHED_SHALE.get()::defaultBlockState, Properties.SHALE)     );
-    public static final RegistryObject<Block> POLISHED_SHALE_SLAB = HELPER.createInjectedBlock("polished_shale_slab", Items.POLISHED_ANDESITE_SLAB, () -> new SlabBlock(Properties.SHALE));
-    public static final RegistryObject<Block> POLISHED_SHALE_WALL = HELPER.createInjectedBlock("polished_shale_wall", Items.ANDESITE_WALL, () -> new WallBlock(Properties.SHALE));
-    public static final RegistryObject<Block> POLISHED_SHALE_VERTICAL_SLAB = HELPER.createBlock (   "polished_shale_vertical_slab", () -> new VerticalSlabBlock(Properties.SHALE));
+    public static final RegistryObject<Block> POLISHED_SHALE = HELPER.createBlock("polished_shale", () -> new Block(Properties.SHALE));
+    public static final RegistryObject<Block> POLISHED_SHALE_STAIRS = HELPER.createBlock("polished_shale_stairs",  () -> new StairBlock(POLISHED_SHALE.get()::defaultBlockState, Properties.SHALE)     );
+    public static final RegistryObject<Block> POLISHED_SHALE_SLAB = HELPER.createBlock("polished_shale_slab",  () -> new SlabBlock(Properties.SHALE));
+    public static final RegistryObject<Block> POLISHED_SHALE_WALL = HELPER.createBlock("polished_shale_wall",  () -> new WallBlock(Properties.SHALE));
+    public static final RegistryObject<Block> POLISHED_SHALE_VERTICAL_SLAB = HELPER.createBlock (   "polished_shale_vertical_slab", () -> new VerticalSlabBlock(SHALE, Properties.SHALE));
 
     public static final RegistryObject<Block> POLISHED_SHALE_BRICKS = HELPER.createBlock("polished_shale_bricks", () -> new Block(Properties.SHALE)     );
     public static final RegistryObject<Block> ICY_POLISHED_SHALE_BRICKS = HELPER.createBlock("icy_polished_shale_bricks", () -> new Block(Properties.SHALE)     );
@@ -248,14 +249,14 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> POLISHED_SHALE_BRICK_STAIRS = HELPER.createBlock("polished_shale_brick_stairs", () -> new StairBlock(POLISHED_SHALE_BRICKS.get()::defaultBlockState, Properties.SHALE)     );
     public static final RegistryObject<Block> POLISHED_SHALE_BRICK_SLAB = HELPER.createBlock("polished_shale_brick_slab", () -> new SlabBlock(Properties.SHALE)     );
     public static final RegistryObject<Block> POLISHED_SHALE_BRICK_WALL = HELPER.createBlock("polished_shale_brick_wall", () -> new WallBlock(Properties.SHALE)     );
-    public static final RegistryObject<Block> POLISHED_SHALE_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "polished_shale_brick_vertical_slab", () -> new VerticalSlabBlock(Properties.SHALE)     );
+    public static final RegistryObject<Block> POLISHED_SHALE_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "polished_shale_brick_vertical_slab", () -> new VerticalSlabBlock(SHALE, Properties.SHALE)     );
 
-    public static final RegistryObject<Block> POLISHED_SHALE_PRESSURE_PLATE = HELPER.createInjectedBlock("polished_shale_pressure_plate", Items.STONE_PRESSURE_PLATE, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().requiresCorrectToolForDrops().noCollission().strength(.5f).sound(SoundType.DRIPSTONE_BLOCK), BlockSetType.STONE));
-    public static final RegistryObject<Block> POLISHED_SHALE_BUTTON = HELPER.createInjectedBlock("polished_shale_button", Items.STONE_BUTTON, () -> new StoneButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(.5f).sound(SoundType.DRIPSTONE_BLOCK)));
+    public static final RegistryObject<Block> POLISHED_SHALE_PRESSURE_PLATE = HELPER.createBlock("polished_shale_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().requiresCorrectToolForDrops().noCollission().strength(.5f).sound(SoundType.DRIPSTONE_BLOCK), BlockSetType.STONE));
+    public static final RegistryObject<Block> POLISHED_SHALE_BUTTON = HELPER.createBlock("polished_shale_button", () -> new ButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(.5f).sound(SoundType.DRIPSTONE_BLOCK)));
 
     // Deepslate //
-    public static final RegistryObject<Block> POLISHED_DEEPSLATE_PRESSURE_PLATE = HELPER.createInjectedBlock("polished_deepslate_pressure_plate", Items.STONE_PRESSURE_PLATE, () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().requiresCorrectToolForDrops().noCollission().strength(.5f).sound(SoundType.POLISHED_DEEPSLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> POLISHED_DEEPSLATE_BUTTON = HELPER.createInjectedBlock("polished_deepslate_button", Items.STONE_BUTTON, () -> new StoneButtonBlock(BlockBehaviour.Properties.of(Material.DECORATION).noCollission().strength(.5f).sound(SoundType.POLISHED_DEEPSLATE)));
+    public static final RegistryObject<Block> POLISHED_DEEPSLATE_PRESSURE_PLATE = HELPER.createBlock("polished_deepslate_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.of().requiresCorrectToolForDrops().noCollission().strength(.5f).sound(SoundType.POLISHED_DEEPSLATE), BlockSetType.STONE));
+    public static final RegistryObject<Block> POLISHED_DEEPSLATE_BUTTON = HELPER.createBlock("polished_deepslate_button", () -> new ButtonBlock(BlockBehaviour.Properties.of().noCollission().strength(.5f).sound(SoundType.POLISHED_DEEPSLATE)));
 
     // Packed Ice Blocks //
     public static final RegistryObject<Block> PACKED_ICE_STAIRS = HELPER.createBlock("packed_ice_stairs", () -> new StairBlock(Blocks.PACKED_ICE::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.PACKED_ICE)));
@@ -267,7 +268,7 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> PACKED_ICE_BRICK_STAIRS = HELPER.createBlock("packed_ice_brick_stairs", () -> new StairBlock(PACKED_ICE_BRICKS.get()::defaultBlockState, Properties.ICE_BRICKS));
     public static final RegistryObject<Block> PACKED_ICE_BRICK_SLAB = HELPER.createBlock("packed_ice_brick_slab", () -> new SlabBlock(Properties.ICE_BRICKS));
     public static final RegistryObject<Block> PACKED_ICE_BRICK_WALL = HELPER.createBlock("packed_ice_brick_wall", () -> new WallBlock(Properties.ICE_BRICKS)     );
-    public static final RegistryObject<Block> PACKED_ICE_BRICK_VERTICAL_SLAB = HELPER.createBlock("packed_ice_brick_vertical_slab", () -> new VerticalSlabBlock(Properties.ICE_BRICKS));
+    public static final RegistryObject<Block> PACKED_ICE_BRICK_VERTICAL_SLAB = HELPER.createBlock("packed_ice_brick_vertical_slab", () -> new VerticalSlabBlock(PACKED_ICE_BRICKS,Properties.ICE_BRICKS));
 
     // Blue Ice Blocks //
     public static final RegistryObject<Block> BLUE_ICE_STAIRS = HELPER.createBlock("blue_ice_stairs", () -> new StairBlock(Blocks.BLUE_ICE::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.BLUE_ICE)));
@@ -310,7 +311,7 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> GINGERBREAD_BRICK_STAIRS = HELPER.createBlock("gingerbread_brick_stairs", () -> new StairBlock(GINGERBREAD_BRICKS.get()::defaultBlockState, Properties.GINGERBREAD)     );
     public static final RegistryObject<Block> GINGERBREAD_BRICK_SLAB = HELPER.createBlock("gingerbread_brick_slab", () -> new SlabBlock(Properties.GINGERBREAD)     );
     public static final RegistryObject<Block> GINGERBREAD_BRICK_WALL = HELPER.createBlock("gingerbread_brick_wall", () -> new WallBlock(Properties.GINGERBREAD)     );
-    public static final RegistryObject<Block> GINGERBREAD_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "gingerbread_brick_vertical_slab", () -> new VerticalSlabBlock(Properties.GINGERBREAD)     );
+    public static final RegistryObject<Block> GINGERBREAD_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "gingerbread_brick_vertical_slab", () -> new VerticalSlabBlock(GINGERBREAD_BLOCK, Properties.GINGERBREAD)     );
 
     public static final RegistryObject<Block> GLAZED_GINGERBREAD_BRICKS = HELPER.createBlock("glazed_gingerbread_bricks", () -> new Block(Properties.GINGERBREAD)     );
     public static final RegistryObject<Block> GLAZED_GINGERBREAD_BRICK_STAIRS = HELPER.createBlock("glazed_gingerbread_brick_stairs", () -> new StairBlock(GLAZED_GINGERBREAD_BRICKS.get()::defaultBlockState, Properties.GINGERBREAD)     );
@@ -329,43 +330,43 @@ public class WindsweptBlocks {
     public static final RegistryObject<Block> CUT_LUNALITE_STAIRS = HELPER.createBlock("cut_lunalite_stairs", () -> new StairBlock(CUT_LUNALITE.get()::defaultBlockState, Properties.LUNALITE)     );
     public static final RegistryObject<Block> CUT_LUNALITE_SLAB = HELPER.createBlock("cut_lunalite_slab", () -> new SlabBlock(Properties.LUNALITE)     );
     public static final RegistryObject<Block> CUT_LUNALITE_WALL = HELPER.createBlock("cut_lunalite_wall", () -> new WallBlock(Properties.LUNALITE)     );
-    public static final RegistryObject<Block> CUT_LUNALITE_VERTICAL_SLAB = HELPER.createBlock (   "cut_lunalite_vertical_slab", () -> new VerticalSlabBlock(Properties.LUNALITE)     );
+    public static final RegistryObject<Block> CUT_LUNALITE_VERTICAL_SLAB = HELPER.createBlock (   "cut_lunalite_vertical_slab", () -> new VerticalSlabBlock(LUNALITE,Properties.LUNALITE));
 
     public static final RegistryObject<Block> CUT_LUNALITE_BRICKS = HELPER.createBlock("cut_lunalite_bricks", () -> new Block(Properties.LUNALITE)     );
     public static final RegistryObject<Block> CHISELED_CUT_LUNALITE_BRICKS = HELPER.createBlock("chiseled_cut_lunalite_bricks", () -> new Block(Properties.LUNALITE)     );
     public static final RegistryObject<Block> CUT_LUNALITE_BRICK_STAIRS = HELPER.createBlock("cut_lunalite_brick_stairs", () -> new StairBlock(CUT_LUNALITE_BRICKS.get()::defaultBlockState, Properties.LUNALITE)     );
     public static final RegistryObject<Block> CUT_LUNALITE_BRICK_SLAB = HELPER.createBlock("cut_lunalite_brick_slab", () -> new SlabBlock(Properties.LUNALITE)     );
     public static final RegistryObject<Block> CUT_LUNALITE_BRICK_WALL = HELPER.createBlock("cut_lunalite_brick_wall", () -> new WallBlock(Properties.LUNALITE)     );
-    public static final RegistryObject<Block> CUT_LUNALITE_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "cut_lunalite_brick_vertical_slab", () -> new VerticalSlabBlock(Properties.LUNALITE)     );
+    public static final RegistryObject<Block> CUT_LUNALITE_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "cut_lunalite_brick_vertical_slab", () -> new VerticalSlabBlock(CUT_LUNALITE_BRICKS,Properties.LUNALITE)     );
 
     public static final RegistryObject<Block> SMOOTH_LUNALITE = HELPER.createBlock("smooth_lunalite", () -> new Block(Properties.LUNALITE)     );
     public static final RegistryObject<Block> SMOOTH_LUNALITE_STAIRS = HELPER.createBlock("smooth_lunalite_stairs", () -> new StairBlock(SMOOTH_LUNALITE.get()::defaultBlockState, Properties.LUNALITE)     );
     public static final RegistryObject<Block> SMOOTH_LUNALITE_SLAB = HELPER.createBlock("smooth_lunalite_slab", () -> new SlabBlock(Properties.LUNALITE)     );
-    public static final RegistryObject<Block> SMOOTH_LUNALITE_VERTICAL_SLAB = HELPER.createBlock (   "smooth_lunalite_vertical_slab", () -> new VerticalSlabBlock(Properties.LUNALITE)     );
+    public static final RegistryObject<Block> SMOOTH_LUNALITE_VERTICAL_SLAB = HELPER.createBlock (   "smooth_lunalite_vertical_slab", () -> new VerticalSlabBlock(SMOOTH_LUNALITE, Properties.LUNALITE)     );
 
     // Dry Mossy Blocks //
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE = HELPER.createInjectedBlock("dry_mossy_cobblestone", Items.MOSSY_COBBLESTONE, () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_STAIRS = HELPER.createInjectedBlock("dry_mossy_cobblestone_stairs", Items.MOSSY_COBBLESTONE_STAIRS, () -> new StairBlock(DRY_MOSSY_COBBLESTONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_SLAB = HELPER.createInjectedBlock("dry_mossy_cobblestone_slab", Items.MOSSY_COBBLESTONE_SLAB, () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_WALL = HELPER.createInjectedBlock("dry_mossy_cobblestone_wall", Items.MOSSY_COBBLESTONE_WALL, () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_VERTICAL_SLAB = HELPER.createBlock (   "dry_mossy_cobblestone_vertical_slab", () -> new VerticalSlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE = HELPER.createBlock("dry_mossy_cobblestone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_STAIRS = HELPER.createBlock("dry_mossy_cobblestone_stairs",() -> new StairBlock(DRY_MOSSY_COBBLESTONE.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_SLAB = HELPER.createBlock("dry_mossy_cobblestone_slab",  () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_WALL = HELPER.createBlock("dry_mossy_cobblestone_wall",  () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_COBBLESTONE))     );
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_VERTICAL_SLAB = HELPER.createBlock (   "dry_mossy_cobblestone_vertical_slab", () -> new VerticalSlabBlock(BlockBehaviour.Properties.copy(DRY_MOSSY_COBBLESTONE))     );
 
-    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICKS = HELPER.createInjectedBlock("dry_mossy_stone_bricks", Items.MOSSY_STONE_BRICKS, () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
-    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_STAIRS = HELPER.createInjectedBlock("dry_mossy_stone_brick_stairs", Items.MOSSY_STONE_BRICK_STAIRS, () -> new StairBlock(DRY_MOSSY_STONE_BRICKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
-    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_SLAB = HELPER.createInjectedBlock("dry_mossy_stone_brick_slab", Items.MOSSY_STONE_BRICK_SLAB, () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
-    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_WALL = HELPER.createInjectedBlock("dry_mossy_stone_brick_wall", Items.MOSSY_STONE_BRICK_WALL, () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
+    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICKS = HELPER.createBlock("dry_mossy_stone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
+    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_STAIRS = HELPER.createBlock("dry_mossy_stone_brick_stairs",  () -> new StairBlock(DRY_MOSSY_STONE_BRICKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
+    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_SLAB = HELPER.createBlock("dry_mossy_stone_brick_slab",() -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
+    public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_WALL = HELPER.createBlock("dry_mossy_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
     public static final RegistryObject<Block> DRY_MOSSY_STONE_BRICK_VERTICAL_SLAB = HELPER.createBlock (   "dry_mossy_stone_brick_vertical_slab", () -> new VerticalSlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     );
 
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICKS = HELPER.createInjectedBlock("dry_mossy_cobblestone_bricks", Items.MOSSY_STONE_BRICKS, () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_STAIRS = HELPER.createInjectedBlock("dry_mossy_cobblestone_brick_stairs", Items.MOSSY_STONE_BRICK_STAIRS, () -> new StairBlock(DRY_MOSSY_COBBLESTONE_BRICKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_SLAB = HELPER.createInjectedBlock("dry_mossy_cobblestone_brick_slab", Items.MOSSY_STONE_BRICK_SLAB, () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_WALL = HELPER.createInjectedBlock("dry_mossy_cobblestone_brick_wall", Items.MOSSY_STONE_BRICK_WALL, () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_VERTICAL_SLAB = HELPER.createBlock("dry_mossy_cobblestone_brick_vertical_slab", () -> new VerticalSlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS))     ,    WindsweptConstants.CAVERNS_AND_CHASMS);
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICKS = HELPER.createBlock("dry_mossy_cobblestone_bricks",  () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_STAIRS = HELPER.createBlock("dry_mossy_cobblestone_brick_stairs",  () -> new StairBlock(DRY_MOSSY_COBBLESTONE_BRICKS.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_SLAB = HELPER.createBlock("dry_mossy_cobblestone_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_WALL = HELPER.createBlock("dry_mossy_cobblestone_brick_wall",  () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_BRICK_VERTICAL_SLAB = HELPER.createBlock("dry_mossy_cobblestone_brick_vertical_slab", () -> new VerticalSlabBlock(Blocks.MOSSY_STONE_BRICKS, Properties.)     ,    WindsweptConstants.CAVERNS_AND_CHASMS);
 
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILES = HELPER.createInjectedBlock("dry_mossy_cobblestone_tiles", Items.MOSSY_STONE_BRICKS, () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_STAIRS = HELPER.createInjectedBlock("dry_mossy_cobblestone_tile_stairs", Items.MOSSY_STONE_BRICK_STAIRS, () -> new StairBlock(DRY_MOSSY_COBBLESTONE_TILES.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_SLAB = HELPER.createInjectedBlock("dry_mossy_cobblestone_tile_slab", Items.MOSSY_STONE_BRICK_SLAB, () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_WALL = HELPER.createInjectedBlock("dry_mossy_cobblestone_tile_wall", Items.MOSSY_STONE_BRICK_WALL, () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILES = HELPER.createBlock("dry_mossy_cobblestone_tiles",  () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_STAIRS = HELPER.createBlock("dry_mossy_cobblestone_tile_stairs",  () -> new StairBlock(DRY_MOSSY_COBBLESTONE_TILES.get()::defaultBlockState, BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_SLAB = HELPER.createBlock("dry_mossy_cobblestone_tile_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_WALL = HELPER.createBlock("dry_mossy_cobblestone_tile_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
     public static final RegistryObject<Block> DRY_MOSSY_COBBLESTONE_TILE_VERTICAL_SLAB = HELPER.createBlock ("dry_mossy_cobblestone_tile_vertical_slab", () -> new VerticalSlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
 
     // Compressed Blocks //
